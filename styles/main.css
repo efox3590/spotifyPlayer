@@ -1,0 +1,27 @@
+body {
+    padding: 20px;
+    background-image: url("https://scontent-iad3-1.xx.fbcdn.net/v/t1.0-9/16299157_10154197777000334_6789069079413897579_n.jpg?oh=f1437add9529bd14b55b72f26ad333eb&oe=593543B4");
+    background-repeat: no-repeat;
+    background-position: right top;
+}
+
+#search-form, .form-control {
+    margin-bottom: 20px;
+}
+
+.cover {
+    width: 300px;
+    height: 300px;
+    display: inline-block;
+    background-size: cover;
+}
+
+.cover:hover {
+    cursor: pointer;
+}
+
+.cover.playing {
+    border: 5px solid #e45343;
+}
+
+
