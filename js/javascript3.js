@@ -1,10 +1,11 @@
 (function() { // protect the lemmings!
 
+
     const templateSource = document.getElementById('results-template').innerHTML,
-    template = Handlebars.compile(templateSource),
-    resultsPlaceholder = document.getElementById('results'),
-    playingCssClass = 'playing',
-    audioObject = null;
+      template = Handlebars.compile(templateSource),
+      resultsPlaceholder = document.getElementById('results'),
+      playingCssClass = 'playing';
+     let audioObject = null;
 
 
 
@@ -50,6 +51,7 @@ results.addEventListener('click', function (e) {
             if (audioObject) {
                 audioObject.pause();
             }
+
             fetchTracks(target.getAttribute('data-album-id'), function (data) {
                 audioObject = new Audio(data.tracks.items[0].preview_url);
                 audioObject.play();
