@@ -11,18 +11,25 @@
 
 
 
-const fetchTracks = function (albumId, callback) {
-    $.ajax({
-        type: "GET",
-        url: 'https://api.spotify.com/v1/albums/' + albumId,
+// const fetchTracks = function (albumId, callback) {
+//     $.ajax({
+//         type: "GET",
+//         url: 'https://api.spotify.com/v1/albums/' + albumId,
 
-         dataType: "json",
+//          dataType: "json",
 
-        success: function (response) {
+//         success: function (response) {
             
-            callback(response);
+//             callback(response);
 
-        }
+//         }
+//     });
+// };
+
+const fetchTracks = function (albumId) {
+    return $.ajax({
+        url: 'https://api.spotify.com/v1/albums/' + albumId,
+        dataType: "json",
     });
 };
 
@@ -52,17 +59,31 @@ results.addEventListener('click', function (e) {
                 audioObject.pause();
             }
 
-            fetchTracks(target.getAttribute('data-album-id'), function (data) {
-                audioObject = new Audio(data.tracks.items[0].preview_url);
-                audioObject.play();
-                target.classList.add(playingCssClass);
-                audioObject.addEventListener('ended', function () {
-                    target.classList.remove(playingCssClass);
-                });
-                audioObject.addEventListener('pause', function () {
-                    target.classList.remove(playingCssClass);
-                });
-            });
+            // fetchTracks(target.getAttribute('data-album-id'), function (data) {
+            //     audioObject = new Audio(data.tracks.items[0].preview_url);
+            //     audioObject.play();
+            //     target.classList.add(playingCssClass);
+            //     audioObject.addEventListener('ended', function () {
+            //         target.classList.remove(playingCssClass);
+            //     });
+            //     audioObject.addEventListener('pause', function () {
+            //         target.classList.remove(playingCssClass);
+            //     });
+            // });
+
+        fetchTracks(target.getAttribute('data-album-id'))
+        .then(function (data) {
+        audioObject = new Audio(data.tracks.items[0].preview_url);
+        audioObject.play();
+        target.classList.add(playingCssClass);
+        audioObject.addEventListener('ended', function () {
+            target.classList.remove(playingCssClass);
+        });
+        audioObject.addEventListener('pause', function () {
+            target.classList.remove(playingCssClass);
+        });
+    });
+
         }
     }
 });
