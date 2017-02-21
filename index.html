@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html>
 <head>
@@ -34,6 +33,7 @@
 <script id="results-template" type="text/x-handlebars-template">
     {{#each albums.items}}
     <div style="background-image:url({{images.0.url}})" data-album-id="{{id}}" class="cover"></div>
+    <span class="album-name">{{name}}</span>
     {{/each}}
 </script>
 
