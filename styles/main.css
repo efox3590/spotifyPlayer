@@ -23,3 +23,12 @@ body {
 }
 
 
+.album-name {
+	width: 80%;
+	color: black;
+	font-weight: bold;
+	display: flex;
+	font-size: 30px;
+	
+}
+
